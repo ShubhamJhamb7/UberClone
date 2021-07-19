@@ -46,12 +46,16 @@ public class DriverController {
         return driver.get();
     }
 
-    public Booking getDriverBookingFromId(Long bookingId, Driver driver) {
-        Optional<Booking> optionalBooking = bookingRepository.findById(bookingId);
-        if (optionalBooking.isEmpty()) {
-            throw new InvalidBookingException("No Booking with id " + optionalBooking);
+    private Booking getBookingFromId(Long bookingId) {
+        Optional<Booking> booking = bookingRepository.findById(bookingId);
+        if (booking.isEmpty()) {
+            throw new InvalidBookingException("No Booking with id " + booking);
         }
-        Booking booking = optionalBooking.get();
+        return booking.get();
+    }
+
+    public Booking getDriverBookingFromId(Long bookingId, Driver driver) {
+        Booking booking = getBookingFromId(bookingId);
         if (!booking.getDriver().equals(driver)) {
             throw new InvalidBookingException(" Driver " + driver.getBookings() + " has no such booking " + bookingId);
         }
@@ -67,6 +71,7 @@ public class DriverController {
 
     @PatchMapping("/{driverId}")
     public void changeAvailability(@PathVariable(name = "driverId") Long driverId, @PathVariable Boolean available) {
+        System.out.println("hitting driverid api");
         Driver driver = getDriverFromId(driverId);
         driver.setIsAvailable(available);
         driverRepository.save(driver);
@@ -87,7 +92,7 @@ public class DriverController {
     @PostMapping("{driverId}/bookings/{bookingId}")
     public void acceptBooking(@RequestParam(name = "driverId") Long driverId, @RequestParam(name = "bookingId") Long bookingId) {
         Driver driver = getDriverFromId(driverId);
-        Booking booking = getDriverBookingFromId(bookingId, driver);
+        Booking booking = getBookingFromId(bookingId);
         bookingService.acceptBooking(driver, booking);
     }
 

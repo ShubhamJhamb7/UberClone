@@ -88,6 +88,8 @@ public class Booking extends Auditable {
         if (!rideStartOTP.validateEnteredOTP(otp, rideStartOtpExpiryMinutes)) {
             throw new InvalidOTPException();
         }
+        startTime = new Date();
+        passenger.setActiveBooking(this);
         bookingStatus = BookingStatus.IN_RIDE;
     }
 
@@ -96,6 +98,8 @@ public class Booking extends Auditable {
             throw new InvalidActionForBookingStateException("The Ride has not started yet");
         }
         driver.setActiveBooking(null);
+        endTime = new Date();
+        passenger.setActiveBooking(null);
         bookingStatus = BookingStatus.COMPLETED;
     }
 

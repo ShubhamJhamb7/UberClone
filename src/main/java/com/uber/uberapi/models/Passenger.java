@@ -41,5 +41,8 @@ public class Passenger extends Auditable {
     @OneToOne
     private ExactLocation lastKnownLocation;
 
+    @OneToOne
+    private Booking activeBooking = null;
+
 
 }
