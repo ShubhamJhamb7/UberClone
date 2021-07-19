@@ -62,7 +62,7 @@ public class BookingService {
         booking.setDriver(null);
         driver.setActiveBooking(null);
         driver.getAcceptableBookings().remove(booking);
-        notificationService.notify(booking.getPassenger().getPhoneNumber(),"Reassigning driver");
+        notificationService.notify(booking.getPassenger().getPhoneNumber(), "Reassigning driver");
         notificationService.notify(driver.getPhoneNumber(), "Booking has been cancelled");
         retryBooking(booking);
     }

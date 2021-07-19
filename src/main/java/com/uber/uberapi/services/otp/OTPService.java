@@ -4,8 +4,8 @@ import com.uber.uberapi.models.OTP;
 
 public interface OTPService {
 
-    public void sendRideStartOTP(OTP rideStartOTP) ;
+    public void sendRideStartOTP(OTP rideStartOTP);
 
 
-    public void sendPhoneNumberConfirmationOTP(OTP otp) ;
+    public void sendPhoneNumberConfirmationOTP(OTP otp);
 }

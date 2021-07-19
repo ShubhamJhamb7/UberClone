@@ -95,7 +95,7 @@ public class DriverController {
     public void cancelBooking(@PathVariable(name = "driverId") Long driverId, @PathVariable(name = "bookingId") Long bookingId) {
         Driver driver = getDriverFromId(driverId);
         Booking booking = getDriverBookingFromId(bookingId, driver);
-        bookingService.cancelByDriver(driver,booking);
+        bookingService.cancelByDriver(driver, booking);
         bookingService.cancelByDriver(driver, booking);
     }
 
@@ -105,7 +105,7 @@ public class DriverController {
                           @PathVariable OTP otp) {
         Driver driver = getDriverFromId(driverId);
         Booking booking = getDriverBookingFromId(bookingId, driver);
-        booking.startRide(otp,constants.getRideStartOTPExpiryMinutes());
+        booking.startRide(otp, constants.getRideStartOTPExpiryMinutes());
         bookingRepository.save(booking);
     }
 
@@ -133,4 +133,6 @@ public class DriverController {
         reviewRepository.save(review);
         bookingRepository.save(booking);
     }
+
+
 }

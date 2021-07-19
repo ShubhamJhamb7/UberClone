@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "namedlocation")
-public class NamedLocation extends Auditable{
+public class NamedLocation extends Auditable {
 
     @OneToOne
     private ExactLocation exactLocation;

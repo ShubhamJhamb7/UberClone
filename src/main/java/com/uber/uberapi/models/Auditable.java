@@ -43,6 +43,7 @@ public abstract class Auditable implements Serializable {
     public int hashCode() {
         return id == null ? 0 : Objects.hash(id);
     }
+
 }
 
 

@@ -15,6 +15,6 @@ import javax.persistence.Table;
 @Table(name = "colour")
 public class Colour extends Auditable {
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
 }

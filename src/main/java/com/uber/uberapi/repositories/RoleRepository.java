@@ -1,4 +1,3 @@
-
 package com.uber.uberapi.repositories;
 
 import com.uber.uberapi.models.Role;

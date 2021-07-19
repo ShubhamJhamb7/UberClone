@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "role")
-public class Role extends Auditable{
+public class Role extends Auditable {
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
 
     private String description;

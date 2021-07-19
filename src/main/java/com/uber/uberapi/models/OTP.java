@@ -24,7 +24,7 @@ public class OTP extends Auditable {
 
     }
 
-    public boolean validateEnteredOTP(OTP otp,Integer expiryMinutes ) {
+    public boolean validateEnteredOTP(OTP otp, Integer expiryMinutes) {
         if (!code.equals(otp.getCode())) {
             return false;
         }

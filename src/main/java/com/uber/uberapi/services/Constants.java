@@ -1,7 +1,6 @@
 package com.uber.uberapi.services;
 
 import com.uber.uberapi.repositories.DBConstantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +10,9 @@ import java.util.Map;
 @Service
 public class Constants {
 
-    final DBConstantRepository dbConstantRepository;
-
-    private final Map<String, String> constants = new HashMap<>();
-
     public static final int TEN_MINUTES = 60 * 10 * 1000;
+    final DBConstantRepository dbConstantRepository;
+    private final Map<String, String> constants = new HashMap<>();
 
     public Constants(DBConstantRepository dbConstantRepository) {
         this.dbConstantRepository = dbConstantRepository;
@@ -35,11 +32,11 @@ public class Constants {
     }
 
     public String getSchedulingTopicName() {
-        return constants.getOrDefault("schedulingTopicName","schedulingServiceTopic");
+        return constants.getOrDefault("schedulingTopicName", "schedulingServiceTopic");
     }
 
     public String getDriverMatchingTopicName() {
-        return constants.getOrDefault("driverMatchingTopicName","driverMatchingTopic");
+        return constants.getOrDefault("driverMatchingTopicName", "driverMatchingTopic");
     }
 
     public int getMaxWaitTimeForPreviousRide() {
@@ -48,5 +45,29 @@ public class Constants {
 
     public Integer getBookingProcessBeforeTime() {
         return Integer.parseInt(constants.getOrDefault("bookingProcessBeforeTime", "900000"));
+    }
+
+    public String getLocationTrackingTopicName() {
+        return constants.getOrDefault("locationTrackingTopicName", "locationTrackingTopic");
+    }
+
+    public double getMaxDistanceForDriverMatching() {
+        return Double.parseDouble(constants.getOrDefault("maxDistanceForDriverMatching", "2"));
+    }
+
+    public int getMaxDriverETAMinutes() {
+        return Integer.parseInt(constants.getOrDefault("maxDriverETAMinutes", "15"));
+    }
+
+    public boolean getIsETABasedFilterEnabled() {
+        return Boolean.parseBoolean(constants.getOrDefault("isETABasedFilterEnabled", "true"));
+    }
+
+    public boolean getIsGenderFilterEnabled() {
+        return Boolean.parseBoolean(constants.getOrDefault("isGenderBasedFilterEnabled", "true"));
+    }
+
+    public double getDefaultETASpeedKmph() {
+        return Double.parseDouble(constants.getOrDefault("defaultETASpeedKmph", "30.0"));
     }
 }

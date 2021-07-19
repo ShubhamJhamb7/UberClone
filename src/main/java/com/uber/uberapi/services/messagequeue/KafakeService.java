@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Queue;
 
 @Service
-public class KafakeService implements MessageQueue{
+public class KafakeService implements MessageQueue {
 
     private final Map<String, Queue<MQMessage>> topics = new HashMap<>();
 
